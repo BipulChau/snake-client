@@ -26,9 +26,9 @@ const connect = function () {
     //   conn.write("Move: up")
     // }, 5000);
 
-    setInterval(()=>{
-      conn.write("Move: up")
-    }, 2000)
+    // setInterval(()=>{
+    //   conn.write("Move: up")
+    // }, 2000)
 })
 
 //   conn.on('connect', () => {
@@ -57,6 +57,10 @@ setupInput;
 //   stdin.on("data", handleUserInput);
 //   return stdin;
 // };
+
+// stdin.on('data', (input) => {
+//    conn.write(`${input}`)
+//  })
 
   conn.on('data', (data) => {
     console.log("DATA CAME IN!!!!!");
