@@ -1,5 +1,5 @@
 const net = require("net");
-const stdin = process.stdin;
+//const stdin = process.stdin;
 
 
 // establishes a connection with the game server
@@ -9,22 +9,36 @@ const connect = function () {
     port: 50542,
   });
 
-  const name = 'Bch';
+  //const name = 'Bch';
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
-  stdin.setEncoding('utf8');
+  //stdin.setEncoding('utf8');
 
-  conn.write(`${name} has connected!!!`);
+  //conn.write(`${name} has connected!!!`);
 
   conn.on('connect', () => {
     console.log("Successfully connected to game server!")
-    //console.log(data);
+    conn.write("Name: bch")
+    
+    // setTimeout(() => {
+    //   conn.write("Move: up")
+    // }, 5000);
+
+    setInterval(()=>{
+      conn.write("Move: up")
+    }, 2000)
 })
 
-stdin.on('data', (input) => {
-  conn.write(`Name: ${input}`)
-})
+//   conn.on('connect', () => {
+//     stdin.on('data', () => {
+//       conn.write(`Move: up`)
+//     })
+// })
+
+// stdin.on('data', () => {
+//   conn.write(`Name: bch`)
+// })
 
   conn.on('data', (data) => {
     console.log("DATA CAME IN!!!!!");
