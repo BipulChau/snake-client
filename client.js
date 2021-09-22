@@ -19,7 +19,7 @@ const connect = function () {
 
   conn.on('connect', () => {
     console.log("Successfully connected to game server!")
-    conn.write("Name: bch")
+    conn.write("Name: OgY")
     
     // setTimeout(() => {
     //   conn.write("Move: up")
@@ -39,6 +39,23 @@ const connect = function () {
 // stdin.on('data', () => {
 //   conn.write(`Name: bch`)
 // })
+
+const handleUserInput = function (key) {
+  if (key === '\u0003') {
+    process.exit();
+  }
+  
+};
+
+
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  stdin.on("data", handleUserInput);
+  return stdin;
+};
 
   conn.on('data', (data) => {
     console.log("DATA CAME IN!!!!!");
