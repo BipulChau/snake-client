@@ -1,4 +1,5 @@
 const net = require("net");
+const setupInput = require('./input.js')
 //const stdin = process.stdin;
 
 
@@ -40,22 +41,22 @@ const connect = function () {
 //   conn.write(`Name: bch`)
 // })
 
-const handleUserInput = function (key) {
-  if (key === '\u0003') {
-    process.exit();
-  }
+// const handleUserInput = function (key) { // taken to input.js
+//   if (key === '\u0003') {
+//     process.exit();
+//   }
   
-};
+// };
 
-
-const setupInput = function () {
-  const stdin = process.stdin;
-  stdin.setRawMode(true);
-  stdin.setEncoding("utf8");
-  stdin.resume();
-  stdin.on("data", handleUserInput);
-  return stdin;
-};
+setupInput;
+// const setupInput = function () {  taken to input.js
+//   const stdin = process.stdin;
+//   stdin.setRawMode(true);
+//   stdin.setEncoding("utf8");
+//   stdin.resume();
+//   stdin.on("data", handleUserInput);
+//   return stdin;
+// };
 
   conn.on('data', (data) => {
     console.log("DATA CAME IN!!!!!");
